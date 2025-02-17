@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import one from '../images/one.jpg'
+import result from '../images/result.jpg'
 import { Form } from "react-bootstrap";
 import axios from "axios"
 
