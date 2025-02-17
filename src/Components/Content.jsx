@@ -4,31 +4,21 @@ import two from '../images/two.jpg'
 import three from '../images/three.jpg'
 import four from '../images/four.jpg'
 import { Form } from "react-bootstrap";
+import axios from "axios"
 
 const Content = () => {
   
   const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/")
-    fetch('http://10.10.7.77:8000/api/')
-      .then(response => response.json())
-      .then(data => setData(data.message));
-  }, []);
-
   const images = [
     one,
     two,
     three,
     four
   ];
-  
   const [selectedImage, setSelectedImage] = useState(images[0]);
-
   const [timeLimit, setTimeLimit] = useState({
     days: 0
   });
-  
   const handleTimeChange = (e, field) => {
     setTimeLimit({
       ...timeLimit,
@@ -54,15 +44,13 @@ const Content = () => {
     const input = document.createElement("input");
     input.type = "file";
     input.accept = "image/*";
-    if (captureType) input.setAttribute("capture", captureType); // "environment" or "user"
-    
+    if (captureType) input.setAttribute("capture", captureType);
     input.onchange = (e) => {
       const file = e.target.files[0];
       if (file) {
-        alert(`Selected file: ${file.name}`);
+        handleFileSelect(e);
       }
     };
-
     input.click();
   };
 
@@ -74,7 +62,7 @@ const Content = () => {
     try {
       const constraints = {
         video: {
-          facingMode: { exact: "environment" }, // Try forcing back camera
+          facingMode: { exact: "environment" },
         },
       };
   
@@ -106,19 +94,34 @@ const Content = () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
-
-    // Draw the video frame onto the canvas
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
-    const imageData = canvas.toDataURL("image/png"); // Convert to PNG format
+    const imageData = canvas.toDataURL("image/png");
     setCapturedImage(imageData);
   };
-
-  const handleFileSelect = (event) => {
+  const handleFileSelect = async (event) => {
     const file = event.target.files[0];
-    if (file) {
-      alert(`Selected file: ${file.name}`);
+    if (!file) {
+        alert("No file selected!");
+        return;
     }
-  };
+    const formData = new FormData();
+    formData.append("shirt_image", file);
+    try {
+        const response = await axios.post("http://localhost:8000/api/measure-shirt/", formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        });
+        console.log(response.data);
+        alert(`Chest Width: ${response.data.chest_width_cm} cm, Suggested Size: ${response.data.suggested_size}`);
+        setShowModal(false);
+        setData(response.data.suggested_size)
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Error uploading file!");
+    }
+};
+
 
   const [showModal, setShowModal] = useState(false);
 
@@ -160,10 +163,9 @@ const Content = () => {
                     onChange={handleImageChange}
                   />
                   
-                  <button className="mb-3 measureBtn" onClick={() => setShowModal(true)}>
+                  {!data ? <button className="mb-3 measureBtn" onClick={() => setShowModal(true)}>
                       Measure Your Size
-                    </button>
-
+                    </button> : <div>Your measured size is {data}</div>}
                     {/* Bootstrap Modal */}
                     {showModal && (
                       <div className="modal fade show d-block" tabIndex="-1">
@@ -210,7 +212,6 @@ const Content = () => {
                     {showModal && <div className="modal-backdrop fade show"></div>}
                   
                    <br />
-                  <span>{data || "Loading..."}</span>
                 </div>
                 <hr className="hrOne" />
 
