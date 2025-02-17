@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# AI-Powered Apparel Size Recommendation & Virtual Try-On
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project aims to reduce high return rates in the apparel section of e-commerce platforms by addressing size mismatches. Our AI-powered solution integrates a *size recommendation model* and a *virtual try-on model* to enhance online shopping experiences, helping customers make better-informed purchasing decisions.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+1. *Size Recommendation Model*
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+   - Uses a smartphone camera to extract t-shirt measurements from a well-fitting garment.
+   - Suggests the best size based on extracted measurements and product size charts.
+   - Ensures a more personalized and accurate sizing experience.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. *Virtual Try-On Model*
 
-### `npm test`
+   - Allows customers to upload a full-body image.
+   - Replaces the existing t-shirt with the selected product to provide a realistic preview.
+   - Enhances confidence in purchasing decisions.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Benefits
 
-### `npm run build`
+- *Reduces return rates* by ensuring customers order the right size.
+- *Improves customer satisfaction* with a visual preview before purchase.
+- *Enhances e-commerce engagement* with AI-driven interactivity.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technology Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- *Machine Learning*: Deep Learning models for image processing.
+- *Computer Vision*: OpenCV, Mediapipe for measurement extraction.
+- *Backend*: Flask/Django for API deployment.
+- *Frontend*: React/Angular for UI integration.
+- *Cloud Services*: AWS/GCP for model hosting and inference.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Integration with E-Commerce Platforms
 
-### `npm run eject`
+- Can be embedded as a plugin for platforms like Shopify, WooCommerce, and Magento.
+- Offers API endpoints for seamless integration with existing mobile and web applications.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Future Enhancements
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Improve AI accuracy with larger and more diverse datasets.
+- Expand try-on features to include full outfits.
+- Implement AR-based real-time try-on in mobile apps.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Installation & Usage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Clone the repository:
+   bash
+   git clone https://github.com/your-repo/ai-size-recommendation.git
+   
+2. Install dependencies:
+   bash
+   pip install -r requirements.txt
+   
+3. Run the backend server:
+   bash
+   python app.py
+   
+4. Access the frontend at localhost:3000 (if applicable).
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This project is licensed under the MIT License.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributors
 
-### Code Splitting
+- Vishal D
+- Ashwin T
+- Abimanyu S
+- Dicson Isaiac B
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Demo Video
+Link : https://drive.google.com/file/d/1pR2v0gvu3UPqeWkd77Boozx-69jg8cmX/view?usp=drivesdk
