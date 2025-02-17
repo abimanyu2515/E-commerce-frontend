@@ -7,10 +7,7 @@ const Content = () => {
   
   const [data, setData] = useState(null);
   const images = [
-    one,
-    two,
-    three,
-    four
+    one
   ];
   const [selectedImage, setSelectedImage] = useState(images[0]);
   const [timeLimit, setTimeLimit] = useState({
