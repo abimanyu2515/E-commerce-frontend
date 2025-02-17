@@ -1,8 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import one from '../images/one.jpg'
-import two from '../images/two.jpg'
-import three from '../images/three.jpg'
-import four from '../images/four.jpg'
 import { Form } from "react-bootstrap";
 import axios from "axios"
 
@@ -212,6 +209,45 @@ const Content = () => {
                     {showModal && <div className="modal-backdrop fade show"></div>}
                   
                    <br />
+
+                                     <button className="virtual" onClick={() => setShowVirtualModal(true)}>Virtual try on</button>
+
+                   { showVirtualModal &&(
+                      <div className="modal fade show d-block" tabIndex="-1">
+                      <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <h5 className="modal-title">Select an Option</h5>
+                            <button
+                              type="button"
+                              className="btn-close"
+                              onClick={() => setShowVirtualModal(false)}
+                            ></button>
+                          </div>
+                          <div className="modal-body text-center">
+                          <button className="mx-2 measureBtnOption" onClick={() => openFileInputVirtual()}>
+                              Choose Photo
+                            </button>
+
+                            {/* Display loading screen */}
+                            {loading && <div className="loading-screen">Loading...</div>}
+
+                            {/* Show selected image after loading */}
+                            {virtualTryImage && !loading && (
+                              <div className="mt-3">
+                                <h5>Virtual Try-On Result:</h5>
+                                <img src={result} alt="Virtual Try-On" width="300" height="400" />
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Background blur effect when modal is open */}
+                  {showModal && <div className="modal-backdrop fade show"></div>}
+                </div>
                 </div>
                 <hr className="hrOne" />
 
